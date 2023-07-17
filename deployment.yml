@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: ka-deployment
+spec:
+  selector:
+    matchLabels:
+      rm: "346007"
+      turma: 2CLDR
+      app: mediawiki
+  replicas: 2
+  template:
+    metadata:
+      labels: 
+        rm: "346007" 
+        turma: 2CLDR
+        app: mediawiki
+    spec:
+      containers: 
+        - name: kacontainer
+          image: mediawiki:latest
+          ports: 
+            - containerPort: 80
+          livenessProbe:
+            httpGet: 
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5

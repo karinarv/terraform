@@ -1,0 +1,84 @@
+file-types: ${FILE_TYPES:csv}
+
+server:
+  forward-headers-strategy: framework
+  port: ${SERVER_PORT:8082}
+  max-http-header-size: ${MAX_HTTP_HEADER_SIZE:16KB}
+
+springdoc:
+  api-docs:
+    path: /v2/api-docs
+  swagger-ui:
+    operationsSorter: method
+    layout: BaseLayout
+    disable-swagger-default-url: true
+
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+    com.abinbev.b2b.data.ingestion.bff: ${LOG_LEVEL_BFF:DEBUG}
+
+mongo:
+  orders:
+    uri: ${ORDER_MONGODB_URI:mongodb://localhost:27017}
+    database: ${ORDER_MONGODB_DATABASE:Order}
+  userVendors:
+    uri: ${USER_VENDOR_MONGODB_URI:mongodb://localhost:27017}
+    database: ${USER_VENDOR_MONGODB_DATABASE:SelfService}
+  data-control:
+    uri: ${MONGODB_URI:mongodb://localhost:27017}
+    database: data-control
+
+encodedSecretKey: ${ENCODED_SECRET_KEY:1234567890123456}
+
+dataIngestion:
+  url: ${DATA_INGESTION_URL:http://localhost:9082/}
+
+dataIngestionConsumer:
+  url: ${DATA_INGESTION_CONSUMER_URL:http://localhost:8080/}
+
+dataIngestionFeedbackService:
+  url: ${DATA_INGESTION_FEEDBACK_SERVICE_URL:http://localhost:9082/}
+
+service:
+  timeout: ${TIMEOUT_REQUEST_SERVICE:30000}
+  identity:
+    userInfo: ${USER_INFO_URL:https://services-sit.bees-platform.dev/v1/identity-service/userinfo?projection=VENDORS}
+    vendor: ${VENDOR_URL:https://services-sit.bees-platform.dev/v1/vendors/v2/?page=0&pageSize=500}
+    m2mToken: ${M2M_TOKEN_URL:http://auth-service/bees-sync/token}
+    maxVendor: ${MAX_VENDORS:30}
+  auth:
+    host: ${AUTH_SERVICE_HOST:localhost}
+    scheme: ${AUTH_SERVICE_SCHEME:https}
+    path: ${AUTH_SERVICE_PATH:/api/auth/token}
+    credentials:
+      TZ:
+        clientId: ${TZ_CLIENT_ID}
+        clientSecret: ${TZ_CLIENT_SECRET}
+        scope: ${TZ_SERVICE_SCOPE}
+      FILE_MANAGEMENT:
+        clientId: ${AUTH_SERVICE_CLIENT_ID:}
+        clientSecret: ${AUTH_SERVICE_CLIENT_SECRET:}
+        scope: ${AUTH_SERVICE_SCOPE:openid}
+  file:
+    url: ${FILE_MANAGER_BASE_URL:https://localhost}
+  order:
+    ordersV3Get: ${URL_ORDER_V3_GET:https://services-sit.bees-platform.dev/v1/order-service/v3/orders}
+
+grafana:
+  url: ${GRAFANA_URL:http://grafana/api}
+  user: ${GRAFANA_USER:}
+  password: ${GRAFANA_PWD:}
+
+async:
+  corePoolSize: ${ASYNC_CORE_POOLSIZE:100}
+  maxPoolSize: ${ASYNC_MAX_POOLSIZE:200}
+
