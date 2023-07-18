@@ -24,31 +24,31 @@ Antes de começar, certifique-se de ter os seguintes requisitos em seu ambiente 
 
 Siga os passos abaixo para implantar o cluster Kubernetes e a aplicação MediaWiki na AWS:
 
-1. Provisionamento da Infraestrutura do Cluster Kubernetes
+### 1. Provisionamento da Infraestrutura do Cluster Kubernetes
 
-    Abra o arquivo terraform/main.tf e configure as variáveis necessárias, como região da AWS e nome do cluster.
-    Execute o comando terraform init para inicializar o Terraform.
-    Execute o comando terraform apply para criar os recursos do cluster Kubernetes na AWS.
-    Aguarde até que o Terraform provisione todos os recursos. Isso pode levar alguns minutos.
-    Anote o endpoint do cluster Kubernetes fornecido pelo Terraform após a conclusão da implantação.
+    - Abra o arquivo terraform/main.tf e configure as variáveis necessárias, como região da AWS e nome do cluster.
+    - Execute o comando terraform init para inicializar o Terraform.
+    - Execute o comando terraform apply para criar os recursos do cluster Kubernetes na AWS.
+    - Aguarde até que o Terraform provisione todos os recursos. Isso pode levar alguns minutos.
+    - Anote o endpoint do cluster Kubernetes fornecido pelo Terraform após a conclusão da implantação.
 
-2. Implantação da Aplicação MediaWiki no Cluster Kubernetes
+### 2. Implantação da Aplicação MediaWiki no Cluster Kubernetes
 
-    Navegue até o diretório kubernetes.
-    Abra o arquivo deployment.yaml e configure as labels de acordo com os requisitos definidos.
-    Abra o arquivo service.yaml e configure o tipo de serviço (LoadBalancer externo ou similar).
-    Se necessário, ajuste outras configurações nos arquivos YAML de acordo com suas necessidades.
-    Execute o seguinte comando para implantar a aplicação MediaWiki no cluster Kubernetes:
+    - Navegue até o diretório kubernetes.
+    - Abra o arquivo deployment.yaml e configure as labels de acordo com os requisitos definidos.
+    - Abra o arquivo service.yaml e configure o tipo de serviço (LoadBalancer externo ou similar).
+    - Se necessário, ajuste outras configurações nos arquivos YAML de acordo com suas necessidades.
+    - Execute o seguinte comando para implantar a aplicação MediaWiki no cluster Kubernetes:
 
     ```bash
     kubectl apply -f deployment.yaml
     kubectl apply -f service.yaml
     ```
 
-    Aguarde até que os pods e o serviço sejam criados e estejam em execução.
-    Anote o endereço IP ou o DNS do serviço MediaWiki fornecido pelo Kubernetes.
+    - Aguarde até que os pods e o serviço sejam criados e estejam em execução.
+    - Anote o endereço IP ou o DNS do serviço MediaWiki fornecido pelo Kubernetes.
 
-3. Acesso à Aplicação MediaWiki
+### 3. Acesso à Aplicação MediaWiki
 
 Após a conclusão da implantação, você pode acessar a aplicação MediaWiki usando o endereço IP ou DNS do serviço MediaWiki anotado anteriormente. Acesse o aplicativo em um navegador da web e siga as instruções para configurar a instância do MediaWiki.
 
