@@ -26,17 +26,17 @@ Siga os passos abaixo para implantar o cluster Kubernetes e a aplicação MediaW
 
 ### Passo 1: Provisionamento da Infraestrutura do Cluster Kubernetes
 
- 1. Abra o arquivo terraform/main.tf e configure as variáveis necessárias, como região da AWS e nome do cluster.
- 2. Execute o comando terraform init para inicializar o Terraform.
- 3. Execute o comando terraform apply para criar os recursos do cluster Kubernetes na AWS.
+ 1. Abra o arquivo `terraform/main.tf` e configure as variáveis necessárias, como região da AWS e nome do cluster.
+ 2. Execute o comando `terraform init` para inicializar o Terraform.
+ 3. Execute o comando `terraform apply` para criar os recursos do cluster Kubernetes na AWS.
  4. Aguarde até que o Terraform provisione todos os recursos. Isso pode levar alguns minutos.
  5. Anote o endpoint do cluster Kubernetes fornecido pelo Terraform após a conclusão da implantação.
 
 ### Passo 2: Implantação da Aplicação MediaWiki no Cluster Kubernetes
 
  1. Navegue até o diretório kubernetes.
- 2. Abra o arquivo deployment.yaml e configure as labels de acordo com os requisitos definidos.
- 3. Abra o arquivo service.yaml e configure o tipo de serviço (LoadBalancer externo ou similar).
+ 2. Abra o arquivo `deployment.yaml` e configure as labels de acordo com os requisitos definidos.
+ 3. Abra o arquivo `service.yaml` e configure o tipo de serviço (LoadBalancer externo ou similar).
  4. Se necessário, ajuste outras configurações nos arquivos YAML de acordo com suas necessidades.
  5. Execute o seguinte comando para implantar a aplicação MediaWiki no cluster Kubernetes:
 
@@ -56,4 +56,8 @@ Após a conclusão da implantação, você pode acessar a aplicação MediaWiki 
 
 Neste projeto, demonstramos como implantar uma aplicação MediaWiki em um cluster Kubernetes usando a AWS como provedor. O uso do Terraform facilita a criação da infraestrutura necessária e o Kubernetes oferece recursos avançados para orquestração e gerenciamento de contêineres.
 
-Sinta-se à vontade para explorar e ajustar os arquivos YAML fornecidos de acordo com suas necessidades específicas. Este projeto serve como ponto de partida para implantar aplicativos em contêineres na AWS usando Kubernetes.
+## Para mais informações, acesse o repositório Git:
+
+```
+https://github.com/karinarv/terraform/blob/main/README.md
+```
