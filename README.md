@@ -35,8 +35,8 @@ Siga os passos abaixo para implantar o cluster Kubernetes e a aplicação MediaW
 2. Implantação da Aplicação MediaWiki no Cluster Kubernetes
 
     Navegue até o diretório kubernetes.
-    Abra o arquivo mediawiki-deployment.yaml e configure as labels de acordo com os requisitos definidos.
-    Abra o arquivo mediawiki-service.yaml e configure o tipo de serviço (LoadBalancer externo ou similar).
+    Abra o arquivo deployment.yaml e configure as labels de acordo com os requisitos definidos.
+    Abra o arquivo service.yaml e configure o tipo de serviço (LoadBalancer externo ou similar).
     Se necessário, ajuste outras configurações nos arquivos YAML de acordo com suas necessidades.
     Execute o seguinte comando para implantar a aplicação MediaWiki no cluster Kubernetes:
 
